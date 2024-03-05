@@ -2,6 +2,8 @@ require("dotenv").config();
 const Fastify = require("fastify");
 const fastifyMysql = require("@fastify/mysql");
 let homeController = require("./routes/home.route");
+let shopController = require("./routes/shop.route");
+let customerController = require("./routes/customer.route");
 let cors = require("@fastify/cors");
 
 // Require the framework and instantiate it
@@ -20,6 +22,8 @@ fastify.register(fastifyMysql, {
 fastify.register(cors);
 
 fastify.register(homeController, { prefix: "/Home" });
+fastify.register(shopController, { prefix: "/Shop" });
+fastify.register(customerController, { prefix: "/Customer" });
 
 // Run the server!
 const start = async () => {
